@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: website-checker
-    env: docker
-    plan: free
-    healthCheckPath: /
-    envVars:
-      - key: PORT
-        value: 3000
