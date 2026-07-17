@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>لوحة فحص المواقع</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="console">
+    <header class="console__header">
+      <div class="console__title">
+        <span class="console__dot"></span>
+        <h1>لوحة فحص المواقع</h1>
+      </div>
+      <p class="console__subtitle">قيس تحمّل موقعك واكتشف الأعطال قبل ما تظهر لوحدها</p>
+    </header>
+
+    <section class="panel">
+      <label class="panel__label" for="targetUrl">رابط الموقع المراد فحصه</label>
+      <input id="targetUrl" class="panel__input" type="text" placeholder="https://example.com" />
+
+      <label class="confirm">
+        <input type="checkbox" id="confirmOwnership" />
+        <span>بأكد إن الموقع ده ملكي أو عندي إذن بفحصه</span>
+      </label>
+
+      <div class="panel__actions">
+        <button id="runLoadTest" class="btn btn--primary">
+          <span>ابدأ اختبار الضغط</span>
+        </button>
+        <button id="runAudit" class="btn btn--secondary">
+          <span>ابدأ الفحص الشامل</span>
+        </button>
+      </div>
+
+      <div class="advanced">
+        <label>أقصى عدد طلبات متزامنة
+          <input id="maxConcurrency" type="number" value="200" min="5" max="500" />
+        </label>
+        <label>أقصى عدد صفحات للفحص
+          <input id="maxPages" type="number" value="15" min="1" max="50" />
+        </label>
+      </div>
+    </section>
+
+    <section id="status" class="status hidden">
+      <div class="spinner"></div>
+      <span id="statusText">جاري الفحص...</span>
+    </section>
+
+    <section id="loadResults" class="results hidden">
+      <h2 class="results__title">نتيجة اختبار الضغط</h2>
+      <div id="breakingPoint" class="breaking-point"></div>
+      <div id="wavesContainer" class="waves"></div>
+    </section>
+
+    <section id="auditResults" class="results hidden">
+      <h2 class="results__title">نتيجة الفحص الشامل</h2>
+      <div class="audit-summary" id="auditSummary"></div>
+
+      <div class="audit-block">
+        <h3>روابط مكسورة</h3>
+        <ul id="brokenLinksList" class="audit-list audit-list--empty-ok"></ul>
+      </div>
+
+      <div class="audit-block">
+        <h3>صفحات بطيئة (أكتر من 2 ثانية)</h3>
+        <ul id="slowPagesList" class="audit-list audit-list--empty-ok"></ul>
+      </div>
+
+      <div class="audit-block">
+        <h3>هيدرز أمان ناقصة</h3>
+        <ul id="securityHeadersList" class="audit-list audit-list--empty-ok"></ul>
+      </div>
+
+      <div class="audit-block">
+        <h3>أخطاء JavaScript في المتصفح</h3>
+        <ul id="consoleErrorsList" class="audit-list audit-list--empty-ok"></ul>
+      </div>
+    </section>
+
+    <section id="errorBox" class="error-box hidden"></section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
