@@ -1,0 +1,19 @@
+{
+  "name": "website-checker",
+  "version": "1.0.0",
+  "description": "أداة شخصية لاختبار ضغط المواقع وفحص الأخطاء الشاملة على أي موقع",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "postinstall": "playwright install chromium"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "express": "^4.19.2",
+    "playwright": "^1.47.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
